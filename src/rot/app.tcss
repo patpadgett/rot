@@ -1,0 +1,286 @@
+Screen {
+    background: #070c09;
+    color: #d9e8de;
+}
+
+#brand {
+    height: 4;
+    padding: 0 1;
+    background: #0b120e;
+    border-bottom: solid #1c2b22;
+}
+
+#metrics {
+    height: 5;
+    padding: 0 1;
+    background: #070c09;
+}
+
+MetricCard {
+    width: 1fr;
+    height: 5;
+    margin: 0 0 0 1;
+    padding: 0 1;
+    background: #0b130f;
+}
+
+#metric-risk {
+    border-top: heavy #ff5f73;
+}
+
+#metric-hotspots {
+    border-top: heavy #ff9f43;
+}
+
+#metric-bus {
+    border-top: heavy #f5d76e;
+}
+
+#metric-stale {
+    border-top: heavy #c792ea;
+}
+
+#metric-churn {
+    border-top: heavy #4de3c1;
+}
+
+#map {
+    height: 11;
+    margin: 0 1 1 1;
+    border: round #2a4232;
+    border-title-color: #b8f36b;
+    border-title-style: bold;
+    border-subtitle-color: #718a7b;
+    background: #08100b;
+}
+
+#body {
+    height: 1fr;
+    min-height: 10;
+    margin: 0 1;
+}
+
+#files {
+    width: 57%;
+    height: 1fr;
+    border: round #2a4232;
+    border-title-color: #b8f36b;
+    border-title-style: bold;
+    border-subtitle-color: #647a6e;
+    background: #09100c;
+    scrollbar-size-vertical: 1;
+    scrollbar-size-horizontal: 1;
+    scrollbar-background: #09100c;
+    scrollbar-background-hover: #0d1711;
+    scrollbar-background-active: #0d1711;
+    scrollbar-color: #1c3023;
+    scrollbar-color-hover: #34523d;
+    scrollbar-color-active: #497451;
+}
+
+#files:focus {
+    border: round #7bc647;
+    border-title-color: #d7ff9d;
+}
+
+#files > .datatable--header {
+    background: #0d1711;
+    color: #8aa395;
+    text-style: bold;
+}
+
+#files > .datatable--cursor {
+    background: #1b3324;
+}
+
+#files > .datatable--hover {
+    background: #122019;
+}
+
+#files > .datatable--even-row {
+    background: #09100c;
+}
+
+#files > .datatable--odd-row {
+    background: #0b130f;
+}
+
+#dossier {
+    width: 1fr;
+    height: 1fr;
+    margin-left: 1;
+    border: round #2a4232;
+    border-title-color: #ff9f43;
+    border-title-style: bold;
+    border-subtitle-color: #647a6e;
+    background: #09100c;
+    scrollbar-size-vertical: 1;
+    scrollbar-background: #09100c;
+    scrollbar-background-hover: #0d1711;
+    scrollbar-background-active: #0d1711;
+    scrollbar-color: #1c3023;
+    scrollbar-color-hover: #34523d;
+    scrollbar-color-active: #497451;
+}
+
+#dossier-body {
+    width: 1fr;
+    height: auto;
+    padding: 0 1;
+    background: transparent;
+}
+
+#filter {
+    display: none;
+    height: 1;
+    margin: 0 1;
+    padding: 0 1;
+    border: none;
+    background: #132019;
+    color: #d9e8de;
+}
+
+#filter.filter-visible {
+    display: block;
+}
+
+#filter:focus {
+    background: #1a2b20;
+    color: #ffffff;
+}
+
+Footer {
+    height: 1;
+    background: #0b120e;
+    color: #72877b;
+}
+
+FooterKey {
+    background: #0b120e;
+}
+
+FooterKey .footer-key--key {
+    color: #c9f58a;
+    background: #142117;
+    text-style: bold;
+    padding: 0 1;
+}
+
+FooterKey .footer-key--description {
+    color: #72877b;
+    background: #0b120e;
+    padding: 0 1 0 0;
+}
+
+FooterKey:hover {
+    background: #17251c;
+}
+
+/* Responsive chrome: short terminals give rows back to data, narrow ones
+   collapse the split view into a full-width leaderboard. */
+Screen.-tiny #brand {
+    display: none;
+}
+
+Screen.-short #brand {
+    height: 3;
+    border-bottom: none;
+}
+
+Screen.-tiny #metrics,
+Screen.-short #metrics {
+    height: 4;
+}
+
+Screen.-tiny MetricCard,
+Screen.-short MetricCard {
+    height: 4;
+}
+
+Screen.-tiny #map {
+    height: 8;
+}
+
+Screen.-short #map {
+    height: 9;
+}
+
+Screen.-tiny #dossier,
+Screen.-short #dossier,
+Screen.-regular #dossier {
+    display: none;
+}
+
+Screen.-tiny #files,
+Screen.-short #files,
+Screen.-regular #files {
+    width: 100%;
+}
+
+Screen.-narrow #dossier {
+    display: none;
+}
+
+Screen.-narrow #files {
+    width: 100%;
+}
+
+Screen.-tiny #body {
+    min-height: 8;
+}
+
+InspectScreen,
+HelpScreen {
+    align: center middle;
+    background: #000000 62%;
+}
+
+.modal-card {
+    width: 112;
+    max-width: 96%;
+    height: 88%;
+    padding: 1 1;
+    background: #0b140e;
+    border: thick #497451;
+}
+
+#help-card {
+    width: 108;
+}
+
+.modal-scroll {
+    height: 1fr;
+    border: none;
+    background: transparent;
+    scrollbar-size-vertical: 1;
+    scrollbar-background: #0b140e;
+    scrollbar-background-hover: #0b140e;
+    scrollbar-background-active: #0b140e;
+    scrollbar-color: #24382a;
+    scrollbar-color-hover: #3c5a44;
+    scrollbar-color-active: #b8f36b;
+}
+
+.modal-body {
+    width: 1fr;
+    height: auto;
+    padding: 0 1;
+    background: transparent;
+}
+
+.modal-hint {
+    height: 1;
+    padding: 0 1;
+    color: #647a6e;
+    background: transparent;
+}
+
+ToastRack {
+    width: 60;
+}
+
+Toast {
+    background: #132019;
+    border-left: thick #b8f36b;
+    color: #d9e8de;
+}
