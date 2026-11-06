@@ -37,6 +37,6 @@ jobs:
       - name: Upload coverage artifacts
         if: matrix.python-version == '3.12'
         run: |
-          pip install coverage
+          pip install coverage pytest-cov
           pytest --cov=rot --cov-report=term-missing --cov-report=xml
         continue-on-error: false
