@@ -280,8 +280,8 @@ _SPECS = [
         "coverage": 0.11,
         "coverage_source": "coverage.xml",
         "test_hits": 1,
-        "test_files": ["services/payments/refunds_test.go"],
-        "test_names": ["services/payments/refunds_test.go"],
+        "test_files": ["services/payments/refunds_test.py"],
+        "test_names": ["services/payments/refunds_test.py"],
         "activity": [1, 1, 2, 1, 2, 1, 2, 3, 1, 2, 2, 1],
     },
     {

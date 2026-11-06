@@ -87,11 +87,15 @@ def scan_repository(
             found = coverage_map.get(metric.path)
             if found is None:
                 # Coverage tools sometimes report a path with an extra source
-                # prefix.  Only accept unambiguous suffix matches.
-                for candidate, value in by_name.get(metric.filename, ()):
-                    if metric.path.endswith("/" + candidate):
-                        found = value
-                        break
+                # prefix.  Accept only an unambiguous match so two source files
+                # sharing a basename are not both credited from one entry.
+                matches = [
+                    value
+                    for candidate, value in by_name.get(metric.filename, ())
+                    if metric.path.endswith("/" + candidate)
+                ]
+                if len(matches) == 1:
+                    found = matches[0]
             if found is not None:
                 metric.coverage, metric.coverage_source = found
                 coverage_matches += 1

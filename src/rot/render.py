@@ -57,6 +57,12 @@ def _spark_text(values: list[int], color: str = TEAL) -> Text:
     return text
 
 
+def BACKGROUND_ON_LANG(color: str) -> str:
+    # Small local helper: use the dark background as the tag's background so
+    # the language tag reads at a fixed contrast against any ramp color.
+    return "#07100b"
+
+
 def _lang_tag(file: FileMetric) -> Text:
     tag = Text()
     color = language_color(file.language)
@@ -65,11 +71,6 @@ def _lang_tag(file: FileMetric) -> Text:
         style=f"bold {BACKGROUND_ON_LANG(color)} on {color}",
     )
     return tag
-
-
-def BACKGROUND_ON_LANG(color: str) -> str:
-    # small local helper avoids importing an extra private utility
-    return "#07100b"
 
 
 def _status_tags(file: FileMetric) -> Text:
