@@ -39,13 +39,22 @@ and [Rich](https://rich.readthedocs.io/).
   stale-file share, and 90-day churn.
 
 Keys: `↑↓` move, `g`/`G` jump to first/last, `enter` inspect, `/` or `f` filter,
-`s` sort, `c` map lens, `r` rescan, `?` methodology, `q` quit.
+`s` sort, `c` map lens, `r` rescan, `esc` clear/close, `?` methodology, `q` quit.
 
 The layout responds to the terminal. At 150×48 the split leaderboard and
 dossier are both visible; below 96 columns or 44 rows the dossier collapses and
 the leaderboard takes the full width; at 80×24 the brand also compresses so the
 map and table keep usable rows. Columns resize to fit, so the table never
 scrolls sideways.
+
+## Supported files
+
+`rot` analyzes 50+ source extensions across Python, JavaScript, TypeScript, Go,
+Rust, Java, Kotlin, C/C++, C#, Ruby, PHP, Swift, Scala, Shell, Lua, SQL, Vue,
+Svelte, Dart, Elixir, Erlang, Clojure, Haskell, OCaml, Zig, Nim, Perl, Groovy,
+F#, and Solidity. Common generated, vendored, and tool directories such as
+`.git`, `node_modules`, `vendor`, `dist`, `build`, `coverage`, and caches are
+ignored automatically, as are minified/generated files.
 
 ## How the risk model works
 
@@ -68,9 +77,11 @@ Synergy bonuses fire when complexity, churn, and single-author ownership line up
 
 Exact line coverage is read from an existing `coverage.xml`, `coverage.json`, or
 `lcov.info` at the repository root; `.coverage` is supported when `coverage.py`
-is installed. If no report exists, `rot` shows a clearly marked, conservative
-**test-link** signal (test files that reference the module) — never a made-up
-percentage, and test files don't receive test-gap penalties.
+is installed. Coverage paths are matched even when the report adds a source
+prefix, and ambiguous matches are skipped rather than credited to the wrong file.
+If no report exists, `rot` shows a clearly marked, conservative **test-link**
+signal (test files that reference the module) — never a made-up percentage, and
+test files don't receive test-gap penalties.
 
 ## CLI
 
@@ -83,9 +94,13 @@ rot [path] [--demo] [--once] [--json] [--max-commits N] [--max-files N]
   stdout is not a TTY).
 - `--json` emits `rot.snapshot.v1` data with per-file history, scores, authors,
   factors, and test signal.
+- `--filter TEXT` keeps only paths containing `TEXT` in the report or dashboard.
+- `--top N` sets the number of rows in the static top-risk table (default: 20).
 - History is capped at 5,000 commits and 6,000 source files by default; the
   dashboard and JSON include a note when a cap is hit so numbers are never
   silently presented as complete.
+- `rot` exits `0` on success and `2` when the path is missing or not a git
+  repository. It can also be run as `python -m rot`.
 
 ## Development
 
