@@ -367,7 +367,7 @@ def _scrub_comments(text: str, language: str) -> str:
     if language in _SLASH_COMMENT_LANGS:
         text = re.sub(r"/\*.*?\*/", " ", text, flags=re.DOTALL)
         text = re.sub(r"(?m)//.*$", " ", text)
-    if language in _HASH_COMMENT_LANGS and language != "python":
+    if language in _HASH_COMMENT_LANGS:
         text = re.sub(r"(?m)#.*$", " ", text)
     if language == "sql":
         text = re.sub(r"(?m)--.*$", " ", text)
