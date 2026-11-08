@@ -126,6 +126,20 @@ headless Chrome):
 The SVG is written by Textual's own screenshot exporter, so it keeps the
 dashboard's real fonts and colors rather than being a mock-up.
 
+## Releasing
+
+Versions are derived from git tags using `hatch-vcs`. To cut a release:
+
+```bash
+git tag -a v0.2.0 -m "v0.2.0"
+git push origin v0.2.0
+```
+
+Pushing a `v*` tag runs the release workflow, which builds the sdist and wheel,
+publishes them to PyPI via trusted publishing, and creates a GitHub release with
+the artifacts. Commits after a tag report a development version such as
+`0.2.1.dev3+gabcdef`, so a checkout of `main` always identifies its commit.
+
 ## License
 
 MIT

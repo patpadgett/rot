@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "rot"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A codebase entropy and health inspector for the terminal"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,6 +24,10 @@ rot = "rot.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/rot"]
+
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "0.1.0"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
