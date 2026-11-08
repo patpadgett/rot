@@ -109,7 +109,7 @@ class FileMetric:
         if self.coverage is not None:
             return self.coverage
         if self.test_hits:
-            return min(0.85, 0.2 + 0.14 * self.test_hits)
+            return min(0.78, 0.22 + 0.12 * self.test_hits)
         return 0.0
 
     def test_label(self) -> str:
