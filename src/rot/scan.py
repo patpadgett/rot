@@ -92,7 +92,7 @@ def scan_repository(
                 matches = [
                     value
                     for candidate, value in by_name.get(metric.filename, ())
-                    if metric.path.endswith("/" + candidate)
+                    if candidate == metric.path or candidate.endswith("/" + metric.path)
                 ]
                 if len(matches) == 1:
                     found = matches[0]
