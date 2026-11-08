@@ -108,23 +108,31 @@ def _load_lcov(root: Path) -> dict[str, tuple[float, str]]:
     current: str | None = None
     found = 0
     hit = 0
+    has_found = False
+    has_hit = False
     da_total = 0
     da_hit = 0
     for line in text.splitlines():
         line = line.strip()
         if line.startswith("SF:"):
             current = _normalize(root, line[3:])
-            found = hit = da_total = da_hit = 0
+            found = hit = 0
+            has_found = has_hit = False
+            da_total = da_hit = 0
         elif line.startswith("LF:"):
             try:
                 found = int(line[3:])
+                has_found = True
             except ValueError:
                 found = 0
+                has_found = False
         elif line.startswith("LH:"):
             try:
                 hit = int(line[3:])
+                has_hit = True
             except ValueError:
                 hit = 0
+                has_hit = False
         elif line.startswith("DA:"):
             try:
                 _, hits = line[3:].split(",", 1)
@@ -133,8 +141,8 @@ def _load_lcov(root: Path) -> dict[str, tuple[float, str]]:
             except ValueError:
                 pass
         elif line == "end_of_record" and current:
-            total = found or da_total
-            covered = hit or da_hit
+            total = found if has_found else da_total
+            covered = hit if has_hit else da_hit
             if total:
                 result[current] = (max(0.0, min(1.0, covered / total)), "lcov.info")
             current = None
